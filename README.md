@@ -1,4 +1,4 @@
-#Shark Game created using HTML5 Canvas
+#Shark Game created with HTML5 Canvas
 ###Using png's and jpg's used canvas to draw images into the HTML.
 ###In JavaScript, added keylistner events to move x and y coordinates of protagonist shark.
 ###Added sea-urchin and jelly-fish enemies to move at random within confines of canvas.
