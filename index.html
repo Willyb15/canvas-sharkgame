@@ -98,6 +98,12 @@ var currScore = 0;
 		x: Math.floor(Math.random()*750),
 		y: Math.floor(Math.random()*450)
 	};
+	var jelly3 = new Image();
+	jelly3.src = "img/jelly1.png";
+	var jelly3Loc = {
+		x: Math.floor(Math.random()*750),
+		y: Math.floor(Math.random()*450)
+	};
 
 
 // Handler for our key presses
@@ -124,7 +130,7 @@ var update = function(){
 	}
 	if(40 in keysDown){
 		// If 40 pressed user pressed down!;
-		if(willLoc.y < 420){
+		if(willLoc.y < 430){
 			willLoc.y +=10;
 		}
 	}
@@ -185,6 +191,15 @@ var update = function(){
 		gameOver();
 	}
 	if(
+		willLoc.x <= (jelly3Loc.x)
+		&& jelly3Loc.x <= (willLoc.x + 32)
+		&& willLoc.y <= (jelly3Loc.y + 32)
+		&& jelly3Loc.y <= (willLoc.y + 32)
+	){
+		console.log("you hit a jelly3!");
+		gameOver();
+	}
+	if(
 		willLoc.x <= (urchinLoc.x)
 		&& urchinLoc.x <= (willLoc.x + 32)
 		&& willLoc.y <= (urchinLoc.y + 32)
@@ -228,6 +243,78 @@ var update = function(){
 	){
 		console.log("you hit an urchin5!");
 		gameOver();
+	}
+	console.log(willLoc.x);
+	if(urchinLoc.y < 0){
+		urchinLoc.y +=50;
+	}else if(urchin2Loc.y < 0){
+		urchin2Loc.y +=50;
+	}else if(urchin3Loc.y < 0){
+		urchin3Loc.y +=50;
+	}else if(urchin4Loc.y < 0){
+		urchin4Loc.y +=50;
+	}else if(urchin5Loc.y < 0){
+		urchin5Loc.y +=50;
+	}else if(jellyLoc.y < 0){
+		jellyLoc.y +=50;
+	}else if(jelly2Loc.y < 0){
+		jelly2Loc.y +=50;
+	}else if(jelly3Loc.y < 0){
+		jelly3Loc.y +=50;
+	}
+
+	if(urchinLoc.y > 420){
+		urchinLoc.y -=50;
+	}else if(urchin2Loc.y > 430){
+		urchin2Loc.y -=50;
+	}else if(urchin3Loc.y > 430){
+		urchin3Loc.y -=50;
+	}else if(urchin4Loc.y > 430){
+		urchin4Loc.y -=50;
+	}else if(urchin5Loc.y > 430){
+		urchin5Loc.y -=50;			
+	}else if(jellyLoc.y > 430){
+		jellyLoc.y -=50;			
+	}else if(jelly2Loc.y > 430){
+		jelly2Loc.y -=50;			
+	}else if(jelly3Loc.y > 430){
+		jelly3Loc.y -=50;		
+	}
+		
+	if(urchinLoc.x < 0){
+		urchinLoc.x += 50;
+	}else if(urchin2Loc.x < 0){
+		urchinLoc.x += 50;
+	}else if(urchin3Loc.x < 0){
+		urchin3Loc.x += 50;
+	}else if(urchin4Loc.x < 0){
+		urchin4Loc.x += 50;
+	}else if(urchin5Loc.x < 0){
+		urchin5Loc.x += 50;
+	}else if(jellyLoc.x < 0){
+		jellyLoc.x += 50;
+	}else if(jelly2Loc.x < 0){
+		jelly2Loc.x += 50;
+	}else if(jelly3Loc.x < 0){
+		jelly3Loc.x += 50;
+	}
+
+	if(urchinLoc.x > 750){
+		urchinLoc.x -= 50;
+	}else if(urchin2Loc.x > 750){
+		urchinLoc.x -= 50;
+	}else if(urchin3Loc.x > 750){
+		urchin3Loc.x -= 50;
+	}else if(urchin4Loc.x > 750){
+		urchin4Loc.x -= 50;
+	}else if(urchin5Loc.x > 750){
+		urchin5Loc.x -= 50;
+	}else if(jellyLoc.x > 750){
+		jellyLoc.x -= 50;
+	}else if(jelly2Loc.x > 750){
+		jelly2Loc.x -= 50;
+	}else if(jelly3Loc.x > 750){
+		jelly3Loc.x -= 50;
 	}
 };
 
@@ -306,27 +393,11 @@ function moveUrchin (){
 	jellyLoc.y += Number(value5 + 10);
 	jelly2Loc.x += Number(value5 + 5);
 	jelly2Loc.y += Number(value5 + 20);
+	jelly3Loc.x += Number(value3 + 5);
+	jelly3Loc.y += Number(value3 + 15);
 
-	console.log(maxLoc.x);
-	// if(urchinLoc.y > 0){
-	// 	urchinLoc.y -=10;
-	// }else if(urchin2Loc.y > 0){
-	// 	urchin2Loc.y -=10;
-	// }else if(urchin3Loc.y > 0){
-	// 	urchin3Loc.y -=10;
-	// }else if(urchin4Loc.y > 0){
-	// 	urchin4Loc.y -=10;
-	// }
+	// console.log(maxLoc.x);
 
-	// if(urchinLoc.y < 420){
-	// 	urchinLoc.y +=10;
-	// }else if(urchin2Loc.y < 420){
-	// 	urchin2Loc.y +=10;
-	// }else if(urchin3Loc.y < 420){
-	// 	urchin3Loc.y +=10;
-	// }else if(urchin4Loc.y < 420){
-	// 	urchin4Loc.y +=10;
-	// }				
 }
 
  setInterval(moveUrchin,1000);
@@ -339,6 +410,7 @@ function draw(){
 	context.drawImage(max, maxLoc.x, maxLoc.y);
 	context.drawImage(jelly, jellyLoc.x, jellyLoc.y);
 	context.drawImage(jelly2, jelly2Loc.x, jelly2Loc.y);
+	context.drawImage(jelly3, jelly3Loc.x, jelly3Loc.y);
 	context.drawImage(urchin2, urchinLoc.x, urchinLoc.y);
 	context.drawImage(urchin2, urchin2Loc.x, urchin2Loc.y);
 	context.drawImage(urchin3, urchin3Loc.x, urchin3Loc.y);
