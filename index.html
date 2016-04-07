@@ -2,83 +2,102 @@
 <html>
 <head>
 	<title></title>
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
+
 <body>
+	<div id="wrapper">
+		High Score: <div id="high-score">0</div>
+		Current Score: <div id="curr-score">0</div>
+	</div>
+
 
 <script type="text/javascript">
+var highScore = localStorage.getItem('highScore');
+var currScore = 0;
 
-// create canvas with JavaScript
-var canvas = document.createElement('canvas');
-// create a context var so we can target it
-var context = canvas.getContext('2d');
 
-// Set hard width and height
-canvas.width =512;
-canvas.height = 480;
-// Put the canvas in the DOM!
-document.body.appendChild(canvas);
+	// create canvas with JavaScript
+	var canvas = document.createElement('canvas');
+	// create a context var so we can target it
+	var context = canvas.getContext('2d');
 
-// put a background image on the canvas
-var bgImage = new Image();
-bgImage.src = "img/ocean2.png";
+	// Set hard width and height
+	canvas.width =800;
+	canvas.height = 480;
+	// Put the canvas in the DOM!
+	document.body.appendChild(canvas);
 
-// Make our hero!
-var will = new Image();
-will.src = "img/shark1.png";
-var willLoc = {
-	x: 100,
-	y: 100
-};
 
-// make our monster!
-var max = new Image();
-max.src = "img/bigfish1.png";
-var maxLoc = {
-	x: Math.floor(Math.random()*450),
-	y: Math.floor(Math.random()*450)
-};
+	// put a background image on the canvas
+	var bgImage = new Image();
+	bgImage.src = "img/ocean2.png";
 
-var urchin = new Image();
-urchin.src = "img/urchin2.png";
-var urchinLoc = {
-	speed: 3,
-	x: Math.floor(Math.random()*450),
-	y: Math.floor(Math.random()*450)
-};
 
-var urchin2 = new Image();
-urchin2.src = "img/urchin2.png";
-var urchin2Loc = {
-	x: Math.floor(Math.random()*450),
-	y: Math.floor(Math.random()*450)
-};
+	// Make our hero!
+	var will = new Image();
+	will.src = "img/shark1.png";
+	var willLoc = {
+		x: 100,
+		y: 100
+	};
 
-var urchin3 = new Image();
-urchin3.src = "img/urchin2.png";
-var urchin3Loc = {
-	x: Math.floor(Math.random()*450),
-	y: Math.floor(Math.random()*450)
-};
+	// make our monster!
+	var max = new Image();
+	max.src = "img/bigfish1.png";
+	var maxLoc = {
+		x: Math.floor(Math.random()*750),
+		y: Math.floor(Math.random()*450)
+	};
 
-var urchin4 = new Image();
-urchin4.src = "img/urchin2.png";
-var urchin4Loc = {
-	x: Math.floor(Math.random()*450),
-	y: Math.floor(Math.random()*450)
-};
-var urchin5 = new Image();
-urchin5.src = "img/urchin2.png";
-var urchin5Loc = {
-	x: Math.floor(Math.random()*450),
-	y: Math.floor(Math.random()*450)
-};
 
-var jelly = new Image();
-jelly.src = "img/jelly1.png";
-var jellyLoc = {
-	x: Math.floor(Math.random()*450),
-	y: Math.floor(Math.random()*450)
-};
+	var urchin = new Image();
+	urchin.src = "img/urchin2.png";
+	var urchinLoc = {
+		speed: 3,
+		x: Math.floor(Math.random()*750),
+		y: Math.floor(Math.random()*450)
+	};
+
+	var urchin2 = new Image();
+	urchin2.src = "img/urchin2.png";
+	var urchin2Loc = {
+		x: Math.floor(Math.random()*750),
+		y: Math.floor(Math.random()*450)
+	};
+
+	var urchin3 = new Image();
+	urchin3.src = "img/urchin2.png";
+	var urchin3Loc = {
+		x: Math.floor(Math.random()*750),
+		y: Math.floor(Math.random()*450)
+	};
+
+	var urchin4 = new Image();
+	urchin4.src = "img/urchin2.png";
+	var urchin4Loc = {
+		x: Math.floor(Math.random()*750),
+		y: Math.floor(Math.random()*450)
+	};
+	var urchin5 = new Image();
+	urchin5.src = "img/urchin2.png";
+	var urchin5Loc = {
+		x: Math.floor(Math.random()*750),
+		y: Math.floor(Math.random()*450)
+	};
+
+	var jelly = new Image();
+	jelly.src = "img/jelly1.png";
+	var jellyLoc = {
+		x: Math.floor(Math.random()*750),
+		y: Math.floor(Math.random()*450)
+	};
+	var jelly2 = new Image();
+	jelly2.src = "img/jelly1.png";
+	var jelly2Loc = {
+		x: Math.floor(Math.random()*750),
+		y: Math.floor(Math.random()*450)
+	};
 
 
 // Handler for our key presses
@@ -111,7 +130,8 @@ var update = function(){
 	}
 	if(37 in keysDown){
 		// If 37 pressed user pressed left!
-	if(willLoc.x > 10 ){
+	if(willLoc.x > 0 ){
+		will.src = "img/shark2.png";
 		willLoc.x -=10;
 		}else{
 			// Will run into bushes Go with natyres call
@@ -120,7 +140,8 @@ var update = function(){
 	}
 	if(39 in keysDown){
 		// If 37 pressed user pressed left!
-	if(willLoc.x < 460){
+	if(willLoc.x < 750){
+		will.src = "img/shark1.png";
 		willLoc.x +=10;
 		}else{
 			// Will run into bushes Go with natyres call
@@ -134,12 +155,110 @@ var update = function(){
 		&& maxLoc.y <= (willLoc.y + 32)
 	){
 		console.log("Will is standing on top of max");
+		currScore++;
+		// console.log(currScore);
+		document.getElementById("high-score").innerHTML = highScore;
+		document.getElementById("curr-score").innerHTML = currScore;
+		// console.dir(document.getElementById("curr-score"));
+		localStorage.setItem("highScore", highScore);
+		resetMax();
+		if(currScore > highScore){
+			highScore = currScore;
+		}
 	}
-
-	
+	if(
+		willLoc.x <= (jellyLoc.x)
+		&& jellyLoc.x <= (willLoc.x + 32)
+		&& willLoc.y <= (jellyLoc.y + 32)
+		&& jellyLoc.y <= (willLoc.y + 32)
+	){
+		console.log("you hit a jelly!");
+		gameOver();
+	}
+	if(
+		willLoc.x <= (jelly2Loc.x)
+		&& jelly2Loc.x <= (willLoc.x + 32)
+		&& willLoc.y <= (jelly2Loc.y + 32)
+		&& jelly2Loc.y <= (willLoc.y + 32)
+	){
+		console.log("you hit a jelly2!");
+		gameOver();
+	}
+	if(
+		willLoc.x <= (urchinLoc.x)
+		&& urchinLoc.x <= (willLoc.x + 32)
+		&& willLoc.y <= (urchinLoc.y + 32)
+		&& urchinLoc.y <= (willLoc.y + 32)
+	){
+		console.log("you hit an urchin!");
+		gameOver();
+	}
+	if(
+		willLoc.x <= (urchin2Loc.x)
+		&& urchin2Loc.x <= (willLoc.x + 32)
+		&& willLoc.y <= (urchin2Loc.y + 32)
+		&& urchin2Loc.y <= (willLoc.y + 32)
+	){
+		console.log("you hit an urchin2!");
+		gameOver();
+	}
+	if(
+		willLoc.x <= (urchin3Loc.x)
+		&& urchin3Loc.x <= (willLoc.x + 32)
+		&& willLoc.y <= (urchin3Loc.y + 32)
+		&& urchin3Loc.y <= (willLoc.y + 32)
+	){
+		console.log("you hit an urchin3!");
+		gameOver();
+	}
+	if(
+		willLoc.x <= (urchin4Loc.x)
+		&& urchin4Loc.x <= (willLoc.x + 32)
+		&& willLoc.y <= (urchin4Loc.y + 32)
+		&& urchin4Loc.y <= (willLoc.y + 32)
+	){
+		console.log("you hit an urchin4!");
+		gameOver();
+	}
+	if(
+		willLoc.x <= (urchin5Loc.x)
+		&& urchin5Loc.x <= (willLoc.x + 32)
+		&& willLoc.y <= (urchin5Loc.y + 32)
+		&& urchin5Loc.y <= (willLoc.y + 32)
+	){
+		console.log("you hit an urchin5!");
+		gameOver();
+	}
 };
 
-var value;
+function resetMax(){
+	maxLoc.x = Math.floor(Math.random()*750);
+	maxLoc.y = Math.floor(Math.random()*450);
+	// urchinLoc.x  = Math.floor(Math.random()*750);
+	// urchinLoc.y  = Math.floor(Math.random()*750);
+	// urchin2Loc.x = Math.floor(Math.random()*750);
+	// urchin2Loc.y = Math.floor(Math.random()*750);
+	// urchin3Loc.x = Math.floor(Math.random()*750);
+	// urchin3Loc.y = Math.floor(Math.random()*750);
+	// urchin4Loc.x = Math.floor(Math.random()*750);
+	// urchin4Loc.y = Math.floor(Math.random()*750);
+	// urchin5Loc.x = Math.floor(Math.random()*750);
+	// urchin5Loc.y = Math.floor(Math.random()*750);
+	// jellyLoc.x   =  Math.floor(Math.random()*750);
+	// jellyLoc.y   = Math.floor(Math.random()*750);
+	// jelly2Loc.x  = Math.floor(Math.random()*750);
+	// jelly2Loc.y  = Math.floor(Math.random()*750);
+}
+
+function gameOver(){
+	keysDown = {};
+	currScore = 0;
+	moveUrchin();
+	resetMax();	
+	document.getElementById("curr-score").innerHTML = currScore;
+}
+
+// var value;
 function moveUrchin (){
 	value = Math.floor(Math.random()*2 + 1);
 	value2 = Math.floor(Math.random()*2 + 1);
@@ -167,37 +286,47 @@ function moveUrchin (){
 	} else {
 		value4 = "+";
 	}
-
-	urchinLoc.x += Number(value + 10);
-	urchinLoc.y += Number(value + 10);
-	urchin2Loc.x += Number(value2 + 20);
-	urchin2Loc.y += Number(value2 + 20);
-	urchin3Loc.x += Number(value3 + 30);
-	urchin3Loc.y += Number(value3 + 30);
-	urchin4Loc.x += Number(value4 + 40);
-	urchin4Loc.y += Number(value4 + 40);
-	urchin5Loc.x += Number(value5 + 40);
-	urchin5Loc.y += Number(value5 + 40);
-	console.log(maxLoc.x);
-	if(urchinLoc.y > 0){
-		urchinLoc.y -=10;
-	}else if(urchin2Loc.y > 0){
-		urchin2Loc.y -=10;
-	}else if(urchin3Loc.y > 0){
-		urchin3Loc.y -=10;
-	}else if(urchin4Loc.y > 0){
-		urchin4Loc.y -=10;
+	if (value5 > 1){
+		value5 = "-";
+	} else {
+		value5 = "+";
 	}
 
-	if(urchinLoc.y < 420){
-		urchinLoc.y +=10;
-	}else if(urchin2Loc.y < 420){
-		urchin2Loc.y +=10;
-	}else if(urchin3Loc.y < 420){
-		urchin3Loc.y +=10;
-	}else if(urchin4Loc.y < 420){
-		urchin4Loc.y +=10;
-	}				
+	urchinLoc.x += Number(value + 10);
+	urchinLoc.y += Number(value + 2);
+	urchin2Loc.x += Number(value2 + 20);
+	urchin2Loc.y += Number(value2 + 5);
+	urchin3Loc.x += Number(value3 + 10);
+	urchin3Loc.y += Number(value3 + 20);
+	urchin4Loc.x += Number(value4 + 5);
+	urchin4Loc.y += Number(value4 + 30);
+	urchin5Loc.x += Number(value5 + 10);
+	urchin5Loc.y += Number(value5 + 10);
+	jellyLoc.x += Number(value5 + 5);
+	jellyLoc.y += Number(value5 + 10);
+	jelly2Loc.x += Number(value5 + 5);
+	jelly2Loc.y += Number(value5 + 20);
+
+	console.log(maxLoc.x);
+	// if(urchinLoc.y > 0){
+	// 	urchinLoc.y -=10;
+	// }else if(urchin2Loc.y > 0){
+	// 	urchin2Loc.y -=10;
+	// }else if(urchin3Loc.y > 0){
+	// 	urchin3Loc.y -=10;
+	// }else if(urchin4Loc.y > 0){
+	// 	urchin4Loc.y -=10;
+	// }
+
+	// if(urchinLoc.y < 420){
+	// 	urchinLoc.y +=10;
+	// }else if(urchin2Loc.y < 420){
+	// 	urchin2Loc.y +=10;
+	// }else if(urchin3Loc.y < 420){
+	// 	urchin3Loc.y +=10;
+	// }else if(urchin4Loc.y < 420){
+	// 	urchin4Loc.y +=10;
+	// }				
 }
 
  setInterval(moveUrchin,1000);
@@ -209,6 +338,7 @@ function draw(){
 	context.drawImage(will, willLoc.x, willLoc.y);
 	context.drawImage(max, maxLoc.x, maxLoc.y);
 	context.drawImage(jelly, jellyLoc.x, jellyLoc.y);
+	context.drawImage(jelly2, jelly2Loc.x, jelly2Loc.y);
 	context.drawImage(urchin2, urchinLoc.x, urchinLoc.y);
 	context.drawImage(urchin2, urchin2Loc.x, urchin2Loc.y);
 	context.drawImage(urchin3, urchin3Loc.x, urchin3Loc.y);
@@ -218,7 +348,6 @@ function draw(){
 	requestAnimationFrame(draw);
 	// console.log(context);
 }
-
 
 draw();
 
