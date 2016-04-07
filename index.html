@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+<script type="text/javascript">
+
+// create canvas with JavaScript
+var canvas = document.createElement('canvas');
+// create a context var so we can target it
+var context = canvas.getContext('2d');
+
+// Set hard width and height
+canvas.width =512;
+canvas.height = 480;
+// Put the canvas in the DOM!
+document.body.appendChild(canvas);
+
+// put a background image on the canvas
+var bgImage = new Image();
+bgImage.src = "img/ocean2.png";
+
+// Make our hero!
+var will = new Image();
+will.src = "img/shark1.png";
+var willLoc = {
+	x: 100,
+	y: 100
+};
+
+// make our monster!
+var max = new Image();
+max.src = "img/bigfish1.png";
+var maxLoc = {
+	x: Math.floor(Math.random()*450),
+	y: Math.floor(Math.random()*450)
+};
+
+var urchin = new Image();
+urchin.src = "img/urchin2.png";
+var urchinLoc = {
+	speed: 3,
+	x: Math.floor(Math.random()*450),
+	y: Math.floor(Math.random()*450)
+};
+
+var urchin2 = new Image();
+urchin2.src = "img/urchin2.png";
+var urchin2Loc = {
+	x: Math.floor(Math.random()*450),
+	y: Math.floor(Math.random()*450)
+};
+
+var urchin3 = new Image();
+urchin3.src = "img/urchin2.png";
+var urchin3Loc = {
+	x: Math.floor(Math.random()*450),
+	y: Math.floor(Math.random()*450)
+};
+
+var urchin4 = new Image();
+urchin4.src = "img/urchin2.png";
+var urchin4Loc = {
+	x: Math.floor(Math.random()*450),
+	y: Math.floor(Math.random()*450)
+};
+var urchin5 = new Image();
+urchin5.src = "img/urchin2.png";
+var urchin5Loc = {
+	x: Math.floor(Math.random()*450),
+	y: Math.floor(Math.random()*450)
+};
+
+var jelly = new Image();
+jelly.src = "img/jelly1.png";
+var jellyLoc = {
+	x: Math.floor(Math.random()*450),
+	y: Math.floor(Math.random()*450)
+};
+
+
+// Handler for our key presses
+var keysDown = [];
+// we will put in this object the keys that are pressed
+addEventListener('keydown', function(event){
+	keysDown[event.keyCode] = true;
+	console.log(keysDown);
+});
+
+addEventListener('keyup', function(event){
+	delete keysDown[event.keyCode];
+
+});
+
+var update = function(){
+	if(38 in keysDown){
+		// if 38 in keys down, that means the user has pressed update
+		// move will up
+		if(willLoc.y > 0){
+			willLoc.y -=10;
+		}
+		
+	}
+	if(40 in keysDown){
+		// If 40 pressed user pressed down!;
+		if(willLoc.y < 420){
+			willLoc.y +=10;
+		}
+	}
+	if(37 in keysDown){
+		// If 37 pressed user pressed left!
+	if(willLoc.x > 10 ){
+		willLoc.x -=10;
+		}else{
+			// Will run into bushes Go with natyres call
+		}
+
+	}
+	if(39 in keysDown){
+		// If 37 pressed user pressed left!
+	if(willLoc.x < 460){
+		willLoc.x +=10;
+		}else{
+			// Will run into bushes Go with natyres call
+		}
+	}
+
+	if(
+		willLoc.x <= (maxLoc.x)
+		&& maxLoc.x <= (willLoc.x + 32)
+		&& willLoc.y <= (maxLoc.y + 32)
+		&& maxLoc.y <= (willLoc.y + 32)
+	){
+		console.log("Will is standing on top of max");
+	}
+
+	
+};
+
+var value;
+function moveUrchin (){
+	value = Math.floor(Math.random()*2 + 1);
+	value2 = Math.floor(Math.random()*2 + 1);
+	value3 = Math.floor(Math.random()*2 + 1);
+	value4 = Math.floor(Math.random()*2 + 1);
+	value5 = Math.floor(Math.random()*2 + 1);
+
+	if (value > 1){
+		value = "-";
+	} else {
+		value = "+";
+	}
+	if (value2 > 1){
+		value2 = "-";
+	} else {
+		value2 = "+";
+	}
+	if (value3 > 1){
+		value3 = "-";
+	} else {
+		value3 = "+";
+	}
+	if (value4 > 1){
+		value4 = "-";
+	} else {
+		value4 = "+";
+	}
+
+	urchinLoc.x += Number(value + 10);
+	urchinLoc.y += Number(value + 10);
+	urchin2Loc.x += Number(value2 + 20);
+	urchin2Loc.y += Number(value2 + 20);
+	urchin3Loc.x += Number(value3 + 30);
+	urchin3Loc.y += Number(value3 + 30);
+	urchin4Loc.x += Number(value4 + 40);
+	urchin4Loc.y += Number(value4 + 40);
+	urchin5Loc.x += Number(value5 + 40);
+	urchin5Loc.y += Number(value5 + 40);
+	console.log(maxLoc.x);
+	if(urchinLoc.y > 0){
+		urchinLoc.y -=10;
+	}else if(urchin2Loc.y > 0){
+		urchin2Loc.y -=10;
+	}else if(urchin3Loc.y > 0){
+		urchin3Loc.y -=10;
+	}else if(urchin4Loc.y > 0){
+		urchin4Loc.y -=10;
+	}
+
+	if(urchinLoc.y < 420){
+		urchinLoc.y +=10;
+	}else if(urchin2Loc.y < 420){
+		urchin2Loc.y +=10;
+	}else if(urchin3Loc.y < 420){
+		urchin3Loc.y +=10;
+	}else if(urchin4Loc.y < 420){
+		urchin4Loc.y +=10;
+	}				
+}
+
+ setInterval(moveUrchin,1000);
+
+
+function draw(){
+	// This is where we draw our stuff!
+	context.drawImage(bgImage, 0,0);
+	context.drawImage(will, willLoc.x, willLoc.y);
+	context.drawImage(max, maxLoc.x, maxLoc.y);
+	context.drawImage(jelly, jellyLoc.x, jellyLoc.y);
+	context.drawImage(urchin2, urchinLoc.x, urchinLoc.y);
+	context.drawImage(urchin2, urchin2Loc.x, urchin2Loc.y);
+	context.drawImage(urchin3, urchin3Loc.x, urchin3Loc.y);
+	context.drawImage(urchin4, urchin4Loc.x, urchin4Loc.y);
+	context.drawImage(urchin5, urchin5Loc.x, urchin5Loc.y);
+	update();
+	requestAnimationFrame(draw);
+	// console.log(context);
+}
+
+
+draw();
+
+
+</script>
+</body>
+</html>
