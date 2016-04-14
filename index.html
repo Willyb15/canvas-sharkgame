@@ -327,16 +327,16 @@ function resetMax(){
 }
 
 function moveUrchin (){
-	value = Math.floor(Math.random()*2 + 1);
-	value2 = Math.floor(Math.random()*2 + 1);
-	value3 = Math.floor(Math.random()*2 + 1);
-	value4 = Math.floor(Math.random()*2 + 1);
-	value5 = Math.floor(Math.random()*2 + 1);
+	value = Math.random()*2;
+	value2 = Math.random()*2;
+	value3 = Math.random()*2;
+	value4 = Math.random()*2;
+	value5 = Math.random()*2;
+
 
 	if (value > 1){
 		value = "-";
-	} else {
-		value = "+";
+	} else {		value = "+";
 	}
 	if (value2 > 1){
 		value2 = "-";
@@ -359,26 +359,25 @@ function moveUrchin (){
 		value5 = "+";
 	}
 
-	urchinLoc.x += (Number(value + 10));
-	urchinLoc.y += (Number(value + 10));
-	urchin2Loc.x += Number(value2 + 20);
-	urchin2Loc.y += Number(value2 + 5);
-	urchin3Loc.x += Number(value3 + 10);
-	urchin3Loc.y += Number(value3 + 20);
-	urchin4Loc.x += Number(value4 + 5);
-	urchin4Loc.y += Number(value4 + 30);
-	urchin5Loc.x += Number(value5 + 10);
-	urchin5Loc.y += Number(value5 + 10);
-	jellyLoc.x += Number(value5 + 5);
-	jellyLoc.y += Number(value5 + 10);
-	jelly2Loc.x += Number(value5 + 5);
-	jelly2Loc.y += Number(value5 + 20);
-	jelly3Loc.x += Number(value3 + 5);
-	jelly3Loc.y += Number(value3 + 15);
+	urchinLoc.x += Number(value + 1);
+	urchinLoc.y += Number(value + 1);
+	urchin2Loc.x += Number(value2 + 1);
+	urchin2Loc.y += Number(value2 + 1);
+	urchin3Loc.x += Number(value3 + 1);
+	urchin3Loc.y += Number(value3 + 1);
+	urchin4Loc.x += Number(value4 + 1);
+	urchin4Loc.y += Number(value4 + 1);
+	urchin5Loc.x += Number(value5 + 1);
+	urchin5Loc.y += Number(value5 + 1);
+	jellyLoc.x -= Number(value5 + 1);
+	jellyLoc.y -= Number(value5 + 1);
+	jelly2Loc.x += Number(value5 + 1);
+	jelly2Loc.y += Number(value5 + 1);
+	jelly3Loc.x += Number(value3 + 1);
+	jelly3Loc.y += Number(value3 + 1);
 }
 
- setInterval(moveUrchin,600);
-
+ setInterval(moveUrchin,50);
 function draw(){
 	// This is where we draw our stuff!
 	context.drawImage(bgImage, 0,0);
