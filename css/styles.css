@@ -1,4 +1,48 @@
+body{
+/*	background-image: url("../img/waves.jpg");
+	background-size:cover;
+	background-repeat: no-repeat;*/
+	/*background-position: scale;*/
+	background-color:black;
+	color:white;
+	font-size: 20px;
+	font-weight: bolder;
+}
+#wrapper{
+	min-width: 1000px;
+	background:white;
+
+}
+
+.directions{
+	position: absolute;
+    right: 10%;
+    /*background:black;*/
+    color:white;
+
+}
+
+.score{
+	/*background: black;*/
+	color:white;
+	position:absolute;
+	left:20%;
+	top:3%;
+	width: 25%;
+}
+
 canvas{
 	border: 15px solid green;
 	border-style: groove;
+	position: absolute;
+    top: 25%;
+    right: 20%;
+}
+
+.start{
+	background-color:green;
+}
+
+.reset{
+	background-color:red;
 }

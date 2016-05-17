@@ -7,10 +7,20 @@
 
 <body>
 	<div id="wrapper">
-		High Score: <div id="high-score">0</div>
-		Current Score: <div id="curr-score">0</div>
-		<button type="button" onclick="reset()">Reset!</button>
-		<button type="button" onclick="startGame()">Start Game!</button>
+		<div class="directions">
+			<ol>
+				<li>Click "Start Game!" button</li>
+				<li>Use Arrow Keys to move shark over green & blue fish to score points</li>
+				<li>Avoid Jelly Fish and Sea Urchins or the game will end!</li>
+				<li>If game ends - click "Reset!"</li>
+			</ol>
+		</div>
+		<div class="score">
+			High Score: <div id="high-score">0</div>
+			Current Score: <div id="curr-score">0</div>
+			<button class="reset" type="button" onclick="reset()">Reset!</button>
+			<button class="start" type="button" onclick="startGame()">Start Game!</button>
+		</div>
 	</div>
 
 
@@ -359,25 +369,25 @@ function moveUrchin (){
 		value5 = "+";
 	}
 
-	urchinLoc.x += Number(value + 1);
-	urchinLoc.y += Number(value + 1);
-	urchin2Loc.x += Number(value2 + 1);
-	urchin2Loc.y += Number(value2 + 1);
-	urchin3Loc.x += Number(value3 + 1);
-	urchin3Loc.y += Number(value3 + 1);
-	urchin4Loc.x += Number(value4 + 1);
-	urchin4Loc.y += Number(value4 + 1);
-	urchin5Loc.x += Number(value5 + 1);
-	urchin5Loc.y += Number(value5 + 1);
-	jellyLoc.x -= Number(value5 + 1);
-	jellyLoc.y -= Number(value5 + 1);
-	jelly2Loc.x += Number(value5 + 1);
-	jelly2Loc.y += Number(value5 + 1);
-	jelly3Loc.x += Number(value3 + 1);
-	jelly3Loc.y += Number(value3 + 1);
+	urchinLoc.x += Number(value + 20);
+	urchinLoc.y += Number(value + 20);
+	urchin2Loc.x += Number(value2 + 20);
+	urchin2Loc.y += Number(value2 + 20);
+	urchin3Loc.x += Number(value3 + 20);
+	urchin3Loc.y += Number(value3 + 20);
+	urchin4Loc.x += Number(value4 + 20);
+	urchin4Loc.y += Number(value4 + 20);
+	urchin5Loc.x += Number(value5 + 20);
+	urchin5Loc.y += Number(value5 + 20);
+	jellyLoc.x -= Number(value5 + 20);
+	jellyLoc.y -= Number(value5 + 20);
+	jelly2Loc.x += Number(value5 + 20);
+	jelly2Loc.y += Number(value5 + 20);
+	jelly3Loc.x += Number(value3 + 20);
+	jelly3Loc.y += Number(value3 + 20);
 }
 
- setInterval(moveUrchin,50);
+ setInterval(moveUrchin,500);
 function draw(){
 	// This is where we draw our stuff!
 	context.drawImage(bgImage, 0,0);
